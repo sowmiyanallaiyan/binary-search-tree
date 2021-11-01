@@ -66,6 +66,18 @@ printf("\t%d",t1->data);
 inorder(t1->right);
 }
 }
+void preorder(struct node *t1)
+{
+if(t1==NULL)
+return;
+else
+{
+printf("\t%d",t1->data);
+preorder(t1->left);
+preorder(t1->right);
+}
+}
+
 void main()
 {
 struct node *root=NULL;
