@@ -77,6 +77,45 @@ preorder(t1->left);
 preorder(t1->right);
 }
 }
+void postorder(struct node *t1)
+{
+if(t1==NULL)
+return;
+else
+{
+postorder(t1->left);
+postorder(t1->right);
+printf("\t%d",t1->data);
+}
+}
+int findmin(struct node *T)
+{
+    if(T==NULL)
+    return -1;
+    while(T->left!=NULL)
+    T=T->left;
+    return(T->data);
+}
+int findmax(struct node *T)
+{
+    if(T==NULL)
+    return -1;
+    while(T->right!=NULL)
+    
+        T=T->right;
+        return (T->data);
+}
+int search(struct node *T,int x)
+{
+    if( T==NULL)
+    return -1;
+    else if(T->data==x)
+    printf("\nThe given number is found");
+    else if(x<T->data)
+    return (search(T->left,x));
+    else if(x>T->data)
+    return (search(T->right,x));
+}
 
 void main()
 {
@@ -87,7 +126,15 @@ root=insert (40,root);
 root=insert(100,root);
 root=insert(99,root);
 root=insert(5,root);
-    delete1(root,52);
+preorder(root);
+printf("\n");
+inorder(root);
+printf("\n");
+postorder(root);
+printf("\nthe minimum value is %d",findmin(root));
+printf("\nthe maximum value is %d",findmax(root));
+search(root,100);
+delete1(root,52);
 printf("\nbinary search tree after deletion\n");
 inorder(root);
 }
